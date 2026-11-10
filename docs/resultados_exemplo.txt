@@ -1,0 +1,116 @@
+
+=== 01_aging_titulos_em_aberto.sql (3 linhas) [sqlite]
+regional | a_vencer | vencido_1_30 | vencido_31_60 | vencido_61_90 | vencido_90_mais | total_em_aberto | qtd_titulos
+Sul | 148,235.63 | 7,368.43 | 0 | 0 | 0 | 155,604.06 | 26
+Norte | 87,090.03 | 7,120.16 | 0 | 0 | 0 | 94,210.19 | 14
+Centro | 76,911.08 | 0 | 0 | 0 | 0 | 76,911.08 | 11
+
+=== 02_excecoes_d3_por_mes.sql (10 linhas) [sqlite]
+mes_recebimento | titulos | excecoes_d3 | pct_excecao | valor_em_excecao
+2026-01 | 131 | 28 | 21.40 | 254,143.98
+2026-02 | 118 | 26 | 22.00 | 205,067.37
+2026-03 | 132 | 35 | 26.50 | 266,030.32
+2026-04 | 122 | 34 | 27.90 | 171,385.36
+2026-05 | 122 | 30 | 24.60 | 316,003.14
+2026-06 | 134 | 25 | 18.70 | 162,427.26
+2026-07 | 146 | 25 | 17.10 | 181,720.79
+2026-08 | 119 | 37 | 31.10 | 256,118.79
+2026-09 | 119 | 28 | 23.50 | 178,477.63
+2026-10 | 129 | 22 | 17.10 | 177,040.57
+
+=== 03_curva_abc_fornecedores.sql (15 linhas) [sqlite]
+razao_social | total | pct_participacao | pct_acumulado | classe
+TRANSVALOR LTDA | 1,684,668.36 | 16.65 | 16.65 | A
+CONSERVA MAIS EIRELI | 1,503,761.10 | 14.86 | 31.51 | A
+LIMPA BEM SERVIÇOS LTDA | 1,393,671.87 | 13.77 | 45.29 | A
+PROTEGE VIGILÂNCIA LTDA | 1,298,487.00 | 12.83 | 58.12 | A
+CONSTRUTORA PILAR LTDA | 1,014,545.77 | 10.03 | 68.15 | A
+MANUTENÇÃO ÔMEGA LTDA | 902,877.92 | 8.92 | 77.07 | A
+IMOBILIÁRIA CENTRAL LTDA | 654,704.92 | 6.47 | 83.54 | A
+TECNOLOGIA NUVEM AZUL S.A. | 480,351.06 | 4.75 | 88.29 | B
+SILVA & SOUZA ADVOGADOS | 409,120.92 | 4.04 | 92.33 | B
+SOFTWARE GESTÃO LTDA | 384,195.55 | 3.80 | 96.13 | B
+SANEAMENTO ESTADUAL S.A. | 89,628.35 | 0.89 | 97.02 | C
+ENERGIA CENTRO-OESTE S.A. | 80,696.50 | 0.80 | 97.81 | C
+FIBRA NET TELECOM LTDA | 80,343.25 | 0.79 | 98.61 | C
+PAPELARIA TOTAL LTDA | 70,475.42 | 0.70 | 99.30 | C
+TELEFONIA BRASIL S.A. | 70,337.98 | 0.70 | 100.00 | C
+
+=== 04_variacao_mensal_lag.sql (11 linhas) [sqlite]
+mes | total | total_mes_anterior | variacao_pct | media_movel_3m
+2026-01 | 1,159,324.28 | None | None | 1,159,324.28
+2026-02 | 906,205.31 | 1,159,324.28 | -21.80 | 1,032,764.80
+2026-03 | 1,193,086.25 | 906,205.31 | 31.70 | 1,086,205.28
+2026-04 | 688,000.54 | 1,193,086.25 | -42.30 | 929,097.37
+2026-05 | 1,021,194.18 | 688,000.54 | 48.40 | 967,426.99
+2026-06 | 926,422.43 | 1,021,194.18 | -9.30 | 878,539.05
+2026-07 | 958,982.16 | 926,422.43 | 3.50 | 968,866.26
+2026-08 | 1,058,450.56 | 958,982.16 | 10.40 | 981,285.05
+2026-09 | 1,038,818.38 | 1,058,450.56 | -1.90 | 1,018,750.37
+2026-10 | 868,320.93 | 1,038,818.38 | -16.40 | 988,529.96
+2026-11 | 299,060.95 | 868,320.93 | -65.60 | 735,400.09
+
+=== 05_top3_fornecedores_por_regional.sql (9 linhas) [sqlite]
+regional | posicao | razao_social | total
+Centro | 1 | TRANSVALOR LTDA | 673,733.85
+Centro | 2 | LIMPA BEM SERVIÇOS LTDA | 486,350.10
+Centro | 3 | CONSTRUTORA PILAR LTDA | 416,763.66
+Norte | 1 | PROTEGE VIGILÂNCIA LTDA | 567,723.15
+Norte | 2 | TRANSVALOR LTDA | 546,448.60
+Norte | 3 | CONSERVA MAIS EIRELI | 491,485.07
+Sul | 1 | CONSERVA MAIS EIRELI | 596,432.94
+Sul | 2 | LIMPA BEM SERVIÇOS LTDA | 586,589.07
+Sul | 3 | TRANSVALOR LTDA | 464,485.91
+
+=== 06_comparativo_ano_contra_ano.sql (6 linhas) [sqlite]
+tipo_despesa | jan_out_2025 | jan_out_2026 | variacao_pct
+Serviços terceiros | 7,293,895.58 | 6,956,955.63 | -4.60
+Manutenção | 1,726,957.09 | 1,861,447.52 | 7.80
+Ocupação | 603,087.36 | 624,656.86 | 3.60
+Utilidades | 163,338.94 | 159,331.71 | -2.50
+Comunicação | 183,662.28 | 148,125.97 | -19.30
+Materiais | 75,446.40 | 68,287.33 | -9.50
+
+=== 07_armadilha_codigo_reduzido.sql (1 linhas) [sqlite]
+cod_reduzido | contas_distintas | descricao_1 | descricao_2 | primeira_vigencia | ultima_vigencia | valor_que_seria_misturado
+4512 | 2 | Limpeza terceirizada (plano novo) | Telefonia fixa (plano antigo) | 2020-01-01 | 2025-01-01 | 6,024,193.13
+
+=== 08_conciliacao_titulo_razao.sql (4 linhas) [sqlite]
+status | qtd | valor_titulos | valor_razao
+OK | 3577 | 27,347,500.55 | 27,347,500.55
+PAGO SEM LANÇAMENTO | 36 | 298,100.87 | 0
+LANÇAMENTO SEM TÍTULO | 4 | 0 | 2,340.04
+VALOR DIVERGENTE | 1 | 4,830.28 | 4,880.28
+
+=== 09_produtividade_ponderada.sql (4 linhas) [sqlite]
+nome | titulos | pontos | pontos_por_titulo | ranking
+Ana Souza | 346 | 520.40 | 1.50 | 1
+Carla Dias | 315 | 478.10 | 1.52 | 2
+Diego Rocha | 314 | 465.90 | 1.48 | 3
+Bruno Lima | 297 | 450.30 | 1.52 | 4
+
+=== 10_qualidade_dos_dados.sql (5 linhas) [sqlite]
+checagem | ocorrencias
+Títulos duplicados (fornecedor + valor + emissão) | 3
+Pagamento anterior à emissão | 0
+Título em conta fora da vigência | 0
+Lançamento no razão com título inexistente | 0
+Título com mais de um lançamento no razão | 0
+
+=== 11_atraso_por_fornecedor.sql (15 linhas) [sqlite]
+razao_social | titulos_pagos | pagos_em_atraso | pct_atraso | media_dias_atraso
+CONSERVA MAIS EIRELI | 107 | 36 | 33.60 | 3.70
+ENERGIA CENTRO-OESTE S.A. | 77 | 22 | 28.60 | 4.50
+TECNOLOGIA NUVEM AZUL S.A. | 105 | 28 | 26.70 | 3.60
+SOFTWARE GESTÃO LTDA | 83 | 22 | 26.50 | 4.30
+FIBRA NET TELECOM LTDA | 82 | 21 | 25.60 | 5.40
+PROTEGE VIGILÂNCIA LTDA | 64 | 16 | 25.00 | 4.00
+IMOBILIÁRIA CENTRAL LTDA | 85 | 21 | 24.70 | 4.20
+SANEAMENTO ESTADUAL S.A. | 83 | 20 | 24.10 | 4.80
+LIMPA BEM SERVIÇOS LTDA | 100 | 24 | 24.00 | 5.60
+TELEFONIA BRASIL S.A. | 71 | 17 | 23.90 | 3.90
+SILVA & SOUZA ADVOGADOS | 84 | 20 | 23.80 | 4.60
+PAPELARIA TOTAL LTDA | 72 | 17 | 23.60 | 4.50
+MANUTENÇÃO ÔMEGA LTDA | 93 | 20 | 21.50 | 4.90
+TRANSVALOR LTDA | 84 | 18 | 21.40 | 5.40
+CONSTRUTORA PILAR LTDA | 90 | 17 | 18.90 | 3.80
